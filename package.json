@@ -2,9 +2,13 @@
     "name": "vscode-devdocs",
     "displayName": "vscode-devdocs",
     "description": "Search docs on devdocs.io",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "publisher": "akfish",
     "icon": "icon-128.png",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/akfish/vscode-devdocs"
+    },
     "engines": {
         "vscode": "^1.10.0"
     },
