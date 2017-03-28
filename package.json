@@ -1,0 +1,78 @@
+{
+    "name": "vscode-devdocs",
+    "displayName": "vscode-devdocs",
+    "description": "Search docs on devdocs.io",
+    "version": "1.0.0",
+    "publisher": "akfish",
+    "icon": "icon-128.png",
+    "engines": {
+        "vscode": "^1.10.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:devdocs.home",
+        "onCommand:devdocs.settings",
+        "onCommand:devdocs.offline",
+        "onCommand:devdocs.quickSearch",
+        "onCommand:devdocs.search"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "devdocs.home",
+                "title": "DevDocs: Home"
+            },
+            {
+                "command": "devdocs.settings",
+                "title": "DevDocs: Settings"
+            },
+            {
+                "command": "devdocs.offline",
+                "title": "DevDocs: Offline Data"
+            },
+            {
+                "command": "devdocs.quickSearch",
+                "title": "DevDocs: Quick Search"
+            },
+            {
+                "command": "devdocs.search",
+                "title": "DevDocs: Search"
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "command": "devdocs.quickSearch",
+                    "when": "editorTextFocus"
+                }
+            ]
+        },
+        "keybindings": [
+            {
+                "key": "alt+shift+d",
+                "command": "devdocs.quickSearch",
+                "when": "editorTextFocus"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "@types/mocha": "^2.2.32",
+        "@types/node": "^6.0.40",
+        "mocha": "^2.3.3",
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0"
+    },
+    "dependencies": {
+        "@types/lodash": "^4.14.58",
+        "lodash": "^4.17.4"
+    }
+}
