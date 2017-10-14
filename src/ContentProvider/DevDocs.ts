@@ -26,6 +26,7 @@ export interface Query {
     keyword?: string
     route?: '/' | '/settings' | '/offline'
     live?: boolean
+    search?: string
 }
 
 export function encodeDevDocsUri(query?: Query): Uri {
@@ -34,7 +35,18 @@ export function encodeDevDocsUri(query?: Query): Uri {
 
 export function decodeDevDocsUri(uri: Uri): Query {
     // TODO: runtime validation
-    return <Query>JSON.parse(uri.query)
+    const query = <Query>JSON.parse(uri.query)
+    const search = []
+    if (query.language) {
+        search.push(query.language)
+    }
+
+    if (query.keyword) {
+        search.push(query.keyword)
+    }
+
+    query.search = search.join(' ')
+    return query
 }
 
 const HTML_CONTENT = (query: Query) => `
@@ -54,7 +66,7 @@ iframe {
 </style>
 
 <body>
-    <iframe src="http://devdocs.io${query.route}#q=${query.keyword || ''}">
+    <iframe src="http://devdocs.io${query.route}#q=${query.search}">
     </iframe>
 </body>
 `

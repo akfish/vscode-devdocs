@@ -42,24 +42,36 @@ export function activate(context: vscode.ExtensionContext) {
         return value
     }
 
+    const getLanguageFromEditor = (editor = vscode.window.activeTextEditor): string => {
+        let value = ''
+
+        if (!!editor) {
+            value = editor.document.languageId
+        }
+
+        return value
+    }
+
     let homeCommand = vscode.commands.registerCommand('devdocs.home', () => {
         return openDevDocs()
     })
 
     let searchCommand = vscode.commands.registerTextEditorCommand('devdocs.search', (editor) => {
         let value = getKeywordFromEditor(editor)
+        const language = getLanguageFromEditor(editor)
         return vscode.window.showInputBox({
             prompt: 'Keyword',
             value
         })
-            .then((keyword) => openDevDocs({ keyword }, `DevDocs : Search${value !== '' ? ` - ${value}` : ''}`))
+            .then((keyword) => openDevDocs({ keyword, language }, `DevDocs : Search${value !== '' ? ` - ${value}` : ''}`))
     })
 
     let quickSearchCommand = vscode.commands.registerTextEditorCommand('devdocs.quickSearch', (editor) => {
         let keyword = getKeywordFromEditor(editor)
+        const language = getLanguageFromEditor(editor)
 
         return typeof keyword === 'string' && keyword !== ''
-            ? openDevDocs({ keyword }, `DevDocs : Search${keyword !== '' ? ` - ${keyword}` : ''}`)
+            ? openDevDocs({ keyword, language }, `DevDocs : Search${keyword !== '' ? ` - ${keyword}` : ''}`)
             : vscode.window.showInformationMessage('No search keywords found for DevDocs at current cursor position')
     })
 
