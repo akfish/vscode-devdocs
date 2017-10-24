@@ -24,6 +24,18 @@ The extension has no control over DevDocs. For best user experience, you should 
 
 For further information, please refer to [DevDocs Help](http://devdocs.io/help).
 
+## Extension Settings
+
+This extension contributes the following setting:
+
+```json
+"devdocs.column": {
+    "type": "number",
+    "default": 2,
+    "description": "A number which indicates which column (1, 2, or 3) to display DevDocs in"
+}
+```
+
 ## Known Issues
 
 * Document list in `devdocs.settings` page might be buggy (lose scroll position on first click)
