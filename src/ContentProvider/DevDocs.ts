@@ -27,6 +27,7 @@ export interface Query {
     route?: '/' | '/settings' | '/offline'
     live?: boolean
     search?: string
+    language?: string
 }
 
 export function encodeDevDocsUri(query?: Query): Uri {
