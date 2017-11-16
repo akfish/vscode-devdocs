@@ -2,7 +2,7 @@
     "name": "vscode-devdocs",
     "displayName": "vscode-devdocs",
     "description": "Search docs on devdocs.io",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "publisher": "akfish",
     "icon": "icon-128.png",
     "repository": {
