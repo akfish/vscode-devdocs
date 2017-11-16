@@ -54,6 +54,18 @@
                 }
             ]
         },
+        "configuration": {
+            "title": "DevDocs: Configuration",
+            "properties": {
+                "devdocs.column": {
+                    "type": "number",
+                    "minimum": 1,
+                    "maximum": 3,
+                    "default": 2,
+                    "description": "A number which indicates which column (1, 2, or 3) to display DevDocs in"
+                }
+            }
+        },
         "keybindings": [
             {
                 "key": "alt+shift+d",

@@ -12,8 +12,15 @@ export function activate(context: vscode.ExtensionContext) {
     let devdocs = new DevDocsContentProvider()
     let registration = vscode.workspace.registerTextDocumentContentProvider(SCHEME, devdocs)
 
+    const getColumn = () => {
+        const column = vscode.workspace.getConfiguration('devdocs').get<number>('column');
+        return column < 1 || column > 3
+            ? vscode.ViewColumn.Two
+            : <vscode.ViewColumn>column
+    }
+
     const openHtml = (uri: vscode.Uri, title) => {
-        return vscode.commands.executeCommand('vscode.previewHtml', uri, vscode.ViewColumn.Two, title)
+        return vscode.commands.executeCommand('vscode.previewHtml', uri, getColumn(), title)
             .then((success) => {
             }, (reason) => {
                 vscode.window.showErrorMessage(reason)
