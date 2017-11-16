@@ -1,8 +1,8 @@
 # vscode-devdocs README
 
-Search documentation on devdocs.io inside VSCode
+**WARNING: Due to restriction imposed by `vscode.previewHtml`, all preferences and offline data for DevDocs will be lost after VSCode restart. It is not recommended to use this extension any more.**
 
-![](preview.gif)
+Search documentation on devdocs.io inside VSCode
 
 ## Commands
 
@@ -19,14 +19,15 @@ devdocs.offline      | Open DevDocs offline data page                           
 This is a simple wrapper around devdocs.io. All documentations are provided and hosted by devdocs.io.
 The extension has no control over DevDocs. For best user experience, you should configure it manually:
 
-* Run `devdocs.settings`. You can choose enabled documents, use dark theme and/or hide sidebar as needed
-* Run `devdocs.offline` to cache documentations locally
+* <del>Run `devdocs.settings`. You can choose enabled documents, use dark theme and/or hide sidebar as needed</del>
+* <del>Run `devdocs.offline` to cache documentations locally</del>
 
 For further information, please refer to [DevDocs Help](http://devdocs.io/help).
 
 ## Known Issues
 
 * Document list in `devdocs.settings` page might be buggy (lose scroll position on first click)
+* All preferences and offline data for DevDocs will be lost after VSCode restart due to recent changes to vscode #4
 
 ## Release Notes
 
