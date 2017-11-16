@@ -13,14 +13,10 @@ export function activate(context: vscode.ExtensionContext) {
     let registration = vscode.workspace.registerTextDocumentContentProvider(SCHEME, devdocs)
 
     const getColumn = () => {
-        const column = vscode.workspace.getConfiguration('devdocs').get('column');
-        switch (column) {
-            case 1: return vscode.ViewColumn.One;
-            case 2: return vscode.ViewColumn.Two;
-            case 3: return vscode.ViewColumn.Three;
-        }
-
-        return vscode.ViewColumn.Two;
+        const column = vscode.workspace.getConfiguration('devdocs').get<number>('column');
+        return column < 1 || column > 3
+            ? vscode.ViewColumn.Two
+            : <vscode.ViewColumn>column
     }
 
     const openHtml = (uri: vscode.Uri, title) => {
